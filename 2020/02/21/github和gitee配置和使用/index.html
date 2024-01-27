@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>github和gitee配置和使用 | RainLotus'Blog</title><meta name="author" content="RainLotus"><meta name="copyright" content="RainLotus"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="github和gitee的配置与使用一、配置SSH公钥免密登录由于需要同时配置两个网站的公钥，为了避免冲突，执行如下操作即可：  第一步，先分别获取两个网站的公钥，并命名为不同的名称做于分辨 12ssh-keygen -t rsa -C &quot;s0704127x@163.com&quot; -f &quot;github_id_rsa&quot;ssh-keygen -t rsa -C &amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github和gitee配置和使用">
+<meta property="og:url" content="https://rainlotus97.github.io/2020/02/21/github%E5%92%8Cgitee%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="RainLotus&#39;Blog">
+<meta property="og:description" content="github和gitee的配置与使用一、配置SSH公钥免密登录由于需要同时配置两个网站的公钥，为了避免冲突，执行如下操作即可：  第一步，先分别获取两个网站的公钥，并命名为不同的名称做于分辨 12ssh-keygen -t rsa -C &quot;s0704127x@163.com&quot; -f &quot;github_id_rsa&quot;ssh-keygen -t rsa -C &amp;q">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/07/31/1I3sEXdbuFDV5WK.jpg">
+<meta property="article:published_time" content="2020-02-21T01:55:35.000Z">
+<meta property="article:modified_time" content="2024-01-27T13:17:54.511Z">
+<meta property="article:author" content="RainLotus">
+<meta property="article:tag" content="github gitee">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/31/1I3sEXdbuFDV5WK.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://rainlotus97.github.io/2020/02/21/github%E5%92%8Cgitee%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'github和gitee配置和使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-27 21:17:54'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/xinyiji.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-fw fa fa-book"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E6%A0%87%E7%AD%BE"><i class="fa-fw /tags/"></i><span> 0</span></a></li><li><a class="site-page child" href="/%E5%88%86%E7%B1%BB"><i class="fa-fw /categories/"></i><span> 1</span></a></li><li><a class="site-page child" href="/%E6%97%B6%E9%97%B4%E8%BD%B4"><i class="fa-fw /archives/"></i><span> 2</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-link"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5"><i class="fa-fw /link/"></i><span> 0</span></a></li><li><a class="site-page child" href="/RainLotus%E5%AF%BC%E8%88%AA%E7%BD%91"><i class="fa-fw https://rainlotus97.github.io/"></i><span> 1</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E"><i class="fa-fw /about/"></i><span> 0</span></a></li><li><a class="site-page child" href="/RainLotus%E4%B8%BB%E9%A2%98"><i class="fa-fw https://rainlotus97.github.io/"></i><span> 1</span></a></li><li><a class="site-page child" href="/RainLotus%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5"><i class="fa-fw https://rainlotus97.github.io/"></i><span> 2</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/07/31/1I3sEXdbuFDV5WK.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="RainLotus'Blog"><span class="site-name">RainLotus'Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-fw fa fa-book"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E6%A0%87%E7%AD%BE"><i class="fa-fw /tags/"></i><span> 0</span></a></li><li><a class="site-page child" href="/%E5%88%86%E7%B1%BB"><i class="fa-fw /categories/"></i><span> 1</span></a></li><li><a class="site-page child" href="/%E6%97%B6%E9%97%B4%E8%BD%B4"><i class="fa-fw /archives/"></i><span> 2</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-link"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5"><i class="fa-fw /link/"></i><span> 0</span></a></li><li><a class="site-page child" href="/RainLotus%E5%AF%BC%E8%88%AA%E7%BD%91"><i class="fa-fw https://rainlotus97.github.io/"></i><span> 1</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E"><i class="fa-fw /about/"></i><span> 0</span></a></li><li><a class="site-page child" href="/RainLotus%E4%B8%BB%E9%A2%98"><i class="fa-fw https://rainlotus97.github.io/"></i><span> 1</span></a></li><li><a class="site-page child" href="/RainLotus%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5"><i class="fa-fw https://rainlotus97.github.io/"></i><span> 2</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">github和gitee配置和使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-02-21T01:55:35.000Z" title="发表于 2020-02-21 09:55:35">2020-02-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-27T13:17:54.511Z" title="更新于 2024-01-27 21:17:54">2024-01-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="github和gitee配置和使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="github和gitee的配置与使用"><a href="#github和gitee的配置与使用" class="headerlink" title="github和gitee的配置与使用"></a>github和gitee的配置与使用</h1><h2 id="一、配置SSH公钥免密登录"><a href="#一、配置SSH公钥免密登录" class="headerlink" title="一、配置SSH公钥免密登录"></a>一、配置SSH公钥免密登录</h2><p>由于需要同时配置两个网站的公钥，为了避免冲突，执行如下操作即可：</p>
+<ul>
+<li><p>第一步，先分别获取两个网站的公钥，并命名为不同的名称做于分辨</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;s0704127x@163.com&quot;</span> -f <span class="string">&quot;github_id_rsa&quot;</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;2642446152@qq.com&quot;</span> -f <span class="string">&quot;gitee_id_rsa&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/TfX7Pgh4zUcJ2W9.png" alt="ssh公钥"></p>
+</li>
+<li><p>第二步，将获取的公钥分别在各自官网配置。其中github对应的key为github_id_rsa.pub，而gitee的key则是gitee_id_rsa.pub。分别用记事本打开，copy一份去配置即可。</p>
+<p>以下则以github为例，成功的结果图如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/cHeB1JoO7sYZl4k.png" alt="ssh公钥"></p>
+</li>
+<li><p>第三步，在.ssh目录下添加一个config脚本文件，并将下方代码复制进去，以用于避免两个网站的地址冲突。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitee</span></span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/gitee_id_rsa</span><br><span class="line"></span><br><span class="line"><span class="comment"># github</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/github_id_rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第四步，也是最关键的一步，通过下方命令检查有没有连接成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>以下为实测成功图，如果和下方相似，基本上你也是连接成功的。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/DHGWvZ2wcnVOL5F.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/WGPuDaFC3emU9jh.png"></p>
+<p> <strong>做完以上步骤，说明SSH免密配置你已经成功完成了！</strong></p>
+</li>
+</ul>
+<h2 id="二、github和gitee新建仓库的步骤"><a href="#二、github和gitee新建仓库的步骤" class="headerlink" title="二、github和gitee新建仓库的步骤"></a>二、github和gitee新建仓库的步骤</h2><h3 id="1-github的网页仓库添加"><a href="#1-github的网页仓库添加" class="headerlink" title="1.github的网页仓库添加"></a>1.github的网页仓库添加</h3><h5 id="第一步，去官网注册github账号，记住自己账号密码，以上！"><a href="#第一步，去官网注册github账号，记住自己账号密码，以上！" class="headerlink" title="第一步，去官网注册github账号，记住自己账号密码，以上！"></a>第一步，去官网注册github账号，记住自己账号密码，以上！</h5><h5 id="第二步，点击页面右上角的-号，选择第一个New-repository来创建，具体如图下所示："><a href="#第二步，点击页面右上角的-号，选择第一个New-repository来创建，具体如图下所示：" class="headerlink" title="第二步，点击页面右上角的**+**号，选择第一个New repository来创建，具体如图下所示："></a>第二步，点击页面右上角的**+**号，选择第一个New repository来创建，具体如图下所示：</h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/2ADJmVlQxKiPZyf.png">		</p>
+<h5 id="第三步，看到如下界面："><a href="#第三步，看到如下界面：" class="headerlink" title="第三步，看到如下界面："></a>第三步，看到如下界面：</h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/kUiS6RAmb9JVYOv.png"></p>
+<p>重点处已有箭头标识，在此再次解释一下。仓库名称(Repository name)尽量英文名称，Description(描述)这是个可选项，用于识别仓库干什么的。底下还有Public和Private两个选项，是用来私人用还是共享用的，不做强求，但往往默认会共享的，看你心情咯~</p>
+<p>最后创建仓库，没了~~~</p>
+<h5 id="第四步，来到了最关键的一步了，先看下图："><a href="#第四步，来到了最关键的一步了，先看下图：" class="headerlink" title="第四步，来到了最关键的一步了，先看下图："></a>第四步，来到了最关键的一步了，先看下图：</h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/kltXAJsLrI65mOy.png"></p>
+<p>第一行有个HTTPS&#x2F;SSH 后面还跟着一串链接，这是我们用来让本地和github建立链接的桥梁，不过有个需要注意的是，HTTPS不好的一点是，接下来我们建立连接的时候会需要要求输入用户名和密码。说不定哪一天抽风了，我们一时记不住密码，就~~嘿嘿~</p>
+<p>所以我们使用SSH登录，方便，更关键的是：不用他我之前写的岂不是白费了？？言归正传，以下放出切换到有SSH链接的图片：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/x9by8LRu1TG7DpZ.png"></p>
+<h5 id="以下才是真正的重点："><a href="#以下才是真正的重点：" class="headerlink" title="以下才是真正的重点："></a><strong>以下才是真正的重点：</strong></h5><p>看第二块和第三块区域，第二块是告诉我们第一次在本地建立仓库的操作，第三块则是对我们本地已有的仓库和刚刚创建好的这个仓库建立连接。</p>
+<p>我们是第一次操作，就看第二块区域就好。我们只要在本地选择好一个文件夹，然后在当前文件夹下右键使用git bash here，随后将它的每一行代码一个个敲就能完成本地仓库和github仓库的连接了！</p>
+<p>我根据上图以及个人收获，总结出下方重要代码块，你一步步操作即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> README.md    //此命令较之github官方更为简单，就是用来在本地创建一个空md文件</span><br><span class="line"></span><br><span class="line">git init           //对本地文件夹初始化，使其变成可建立连接的本地仓库</span><br><span class="line"></span><br><span class="line">git add README.md   //将README.md文档添加到暂存区</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span>  //对添加的文件添加备注，引号内可以随便写</span><br><span class="line"></span><br><span class="line">git remote add origin git@github.com:******/CodeServer.git </span><br><span class="line">//第一次操作，这步至关重要，就是让你当前文件夹(本地仓库)和github的个人仓库建立联系</span><br><span class="line"></span><br><span class="line">git push -u origin master 	  </span><br><span class="line">//最后将之前添加备注的提交文件推送到github仓库的master分支之下</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> README.md </span><br><span class="line">git init </span><br><span class="line">git add README.md</span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line">git remote add origin git@github.com:*****/CodeServer.git</span><br><span class="line">git push -u origin master </span><br></pre></td></tr></table></figure>
+
+<p>以上代码专门拿出来方便你copy使用，记住 <a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;</a>:***&#x2F;CodeServer.git这个是我的SSH链接地址，你需要换成自己的。而且，以上操作1仅限第一次使用，之后上传代码则无需上述那么多繁杂步骤了！</p>
+<p>以下放出我的成功截图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/FXq8yQA6B4i3vbU.png"></p>
+<h5 id="第五步，平时上传本地仓库的操作"><a href="#第五步，平时上传本地仓库的操作" class="headerlink" title="第五步，平时上传本地仓库的操作"></a>第五步，平时上传本地仓库的操作</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;第二次提交&quot;</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>只需要这三条命令就可以将本地文件推送到github的个人仓库了！</p>
+<p>最后再顺便聊一下，官方网站上仓库的下载方法吧</p>
+<ol>
+<li><p>直接下载</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/ijEUM8w7TAdyobs.png"></p>
+<p>直接下载就是点击Download ZIP即可</p>
+</li>
+<li><p>用命令下载</p>
+<p>上图会有链接，copy一下，我这个是SSH的链接，你也可以选择HTTPS的。我建议你可以把这个地址记录在本地，忘记了打开它复制一下就好了。</p>
+<p>在git bash here中输入以下代码即可下载了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:*****/CodeServer.git</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="第六步，错误总结"><a href="#第六步，错误总结" class="headerlink" title="第六步，错误总结"></a>第六步，错误总结</h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/07/30/s19lgxIwcDrO2XT.png"></p>
+<p>有时候你可能会与到上图黄字部分的报错，而你执行的操作则是push -u origin master这一步推送操作而已。这个时候你只需要执行下方代码即可完美解决这个问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-gitee的网页仓库添加"><a href="#2-gitee的网页仓库添加" class="headerlink" title="2.gitee的网页仓库添加"></a>2.gitee的网页仓库添加</h2><p>gitee是国产的类似于github的网站，操作流程和github十分相似，建立仓库，初始化本地仓库的操作都是一样的，就连本地化初始仓库、建立连接等操作所用的命令也是一模一样。没啥好说的了，不过我们可以谈谈另外一件事。</p>
+<p><strong>github下载慢</strong></p>
+<p>这个问题可以解决吗？</p>
+<p>可以，要么VPN(有时候还不管用),外国云服务器下载(超级快，几十兆每秒，就是你还需要再下回到本地，但是依旧比直接在官网下载的快)。我知道的最后一个方法，就是讲github的项目导入到gitee上，再从gitee上下载下来就好了！(速度也就比github上好看些，免费！)</p>
+<h2 id="三、gitee和github的同步刷新"><a href="#三、gitee和github的同步刷新" class="headerlink" title="三、gitee和github的同步刷新"></a>三、gitee和github的同步刷新</h2><p>gitee比较坑的地方就是，对github导入的库不能同步刷新，必须在官网手动刷新很麻烦。这个时候可以尝试同步刷新的方法！</p>
+<ol>
+<li><p>在项目目录找到<code>.git</code>隐藏文件夹，如果在项目目录找不到<code>.git</code>隐藏文件夹，文件夹右上角打开<code>查看</code>然后找到<code>隐藏的项目</code>并勾选即可 </p>
+</li>
+<li><p>用记事本打开<code>config</code>文件，把Gitee(码云)(或者github，看你缺啥)的仓库地址填进去即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = 0</span><br><span class="line">	filemode = <span class="literal">false</span></span><br><span class="line">	bare = <span class="literal">false</span></span><br><span class="line">	logallrefupdates = <span class="literal">true</span></span><br><span class="line">	symlinks = <span class="literal">false</span></span><br><span class="line">	ignorecase = <span class="literal">true</span></span><br><span class="line">[remote <span class="string">&quot;origin&quot;</span>]</span><br><span class="line">	url = git@github.com:rainlotus97/CodeServer.git</span><br><span class="line">	url = git@gitee.com:rainlotus97/CodeServer2.git   //这是后添加的</span><br><span class="line">	fetch = +refs/heads/*:refs/remotes/origin/*</span><br><span class="line">[branch <span class="string">&quot;master&quot;</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> 最后重新<code>push</code>即可，如果Gitee(码云)仓库有过提交，使用此方法第一次提交请使用<code>强行提交</code>，避免抱错 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master</span><br></pre></td></tr></table></figure></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://rainlotus97.github.io">RainLotus</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://rainlotus97.github.io/2020/02/21/github%E5%92%8Cgitee%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/">https://rainlotus97.github.io/2020/02/21/github%E5%92%8Cgitee%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://rainlotus97.github.io" target="_blank">RainLotus'Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/github-gitee/">github gitee</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/07/31/1I3sEXdbuFDV5WK.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2020/03/22/NextJs/" title="NextJs"><img class="cover" src="https://i.loli.net/2020/11/10/EXCL6zKcFU8qejf.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">NextJs</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/xinyiji.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RainLotus</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/rainlotus97" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:s0704127x@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome To RainLotus' Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#github%E5%92%8Cgitee%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">github和gitee的配置与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%85%8D%E7%BD%AESSH%E5%85%AC%E9%92%A5%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">一、配置SSH公钥免密登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81github%E5%92%8Cgitee%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.</span> <span class="toc-text">二、github和gitee新建仓库的步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-github%E7%9A%84%E7%BD%91%E9%A1%B5%E4%BB%93%E5%BA%93%E6%B7%BB%E5%8A%A0"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.github的网页仓库添加</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%8C%E5%8E%BB%E5%AE%98%E7%BD%91%E6%B3%A8%E5%86%8Cgithub%E8%B4%A6%E5%8F%B7%EF%BC%8C%E8%AE%B0%E4%BD%8F%E8%87%AA%E5%B7%B1%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%EF%BC%8C%E4%BB%A5%E4%B8%8A%EF%BC%81"><span class="toc-number">1.2.1.0.1.</span> <span class="toc-text">第一步，去官网注册github账号，记住自己账号密码，以上！</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%8C%E7%82%B9%E5%87%BB%E9%A1%B5%E9%9D%A2%E5%8F%B3%E4%B8%8A%E8%A7%92%E7%9A%84-%E5%8F%B7%EF%BC%8C%E9%80%89%E6%8B%A9%E7%AC%AC%E4%B8%80%E4%B8%AANew-repository%E6%9D%A5%E5%88%9B%E5%BB%BA%EF%BC%8C%E5%85%B7%E4%BD%93%E5%A6%82%E5%9B%BE%E4%B8%8B%E6%89%80%E7%A4%BA%EF%BC%9A"><span class="toc-number">1.2.1.0.2.</span> <span class="toc-text">第二步，点击页面右上角的**+**号，选择第一个New repository来创建，具体如图下所示：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%8C%E7%9C%8B%E5%88%B0%E5%A6%82%E4%B8%8B%E7%95%8C%E9%9D%A2%EF%BC%9A"><span class="toc-number">1.2.1.0.3.</span> <span class="toc-text">第三步，看到如下界面：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%8C%E6%9D%A5%E5%88%B0%E4%BA%86%E6%9C%80%E5%85%B3%E9%94%AE%E7%9A%84%E4%B8%80%E6%AD%A5%E4%BA%86%EF%BC%8C%E5%85%88%E7%9C%8B%E4%B8%8B%E5%9B%BE%EF%BC%9A"><span class="toc-number">1.2.1.0.4.</span> <span class="toc-text">第四步，来到了最关键的一步了，先看下图：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E6%89%8D%E6%98%AF%E7%9C%9F%E6%AD%A3%E7%9A%84%E9%87%8D%E7%82%B9%EF%BC%9A"><span class="toc-number">1.2.1.0.5.</span> <span class="toc-text">以下才是真正的重点：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%8C%E5%B9%B3%E6%97%B6%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.1.0.6.</span> <span class="toc-text">第五步，平时上传本地仓库的操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%8C%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.1.0.7.</span> <span class="toc-text">第六步，错误总结</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-gitee%E7%9A%84%E7%BD%91%E9%A1%B5%E4%BB%93%E5%BA%93%E6%B7%BB%E5%8A%A0"><span class="toc-number">1.3.</span> <span class="toc-text">2.gitee的网页仓库添加</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81gitee%E5%92%8Cgithub%E7%9A%84%E5%90%8C%E6%AD%A5%E5%88%B7%E6%96%B0"><span class="toc-number">1.4.</span> <span class="toc-text">三、gitee和github的同步刷新</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/22/openharmony%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/" title="openharmony基础知识学习"><img src="https://cdn.jsdelivr.net/gh/rainlotus97/images/data/2023-03-22/aniya.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="openharmony基础知识学习"/></a><div class="content"><a class="title" href="/2023/03/22/openharmony%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/" title="openharmony基础知识学习">openharmony基础知识学习</a><time datetime="2023-03-22T12:11:02.000Z" title="发表于 2023-03-22 20:11:02">2023-03-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/19/%E5%A4%9A%E5%B1%82%E7%BA%A7%E9%A5%BC%E5%9B%BE/" title="多层级饼图"><img src="https://cdn.jsdelivr.net/gh/rainlotus97/images/data/2022-06-19/FINAL%20FANTASY%20VII%20REMAKE%E3%80%80Alice.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="多层级饼图"/></a><div class="content"><a class="title" href="/2022/06/19/%E5%A4%9A%E5%B1%82%E7%BA%A7%E9%A5%BC%E5%9B%BE/" title="多层级饼图">多层级饼图</a><time datetime="2022-06-19T03:54:06.000Z" title="发表于 2022-06-19 11:54:06">2022-06-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/02/NG-ALAIN/" title="NG-ALAIN"><img src="https://i.loli.net/2021/05/02/NeDAEbFqdwtVvZs.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NG-ALAIN"/></a><div class="content"><a class="title" href="/2021/05/02/NG-ALAIN/" title="NG-ALAIN">NG-ALAIN</a><time datetime="2021-05-02T08:10:06.000Z" title="发表于 2021-05-02 16:10:06">2021-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/13/%E5%AE%9E%E7%94%A8js%E5%87%BD%E6%95%B0/" title="实用js函数"><img src="https://i.loli.net/2021/01/13/QTldtf3xK2sV4ic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实用js函数"/></a><div class="content"><a class="title" href="/2021/01/13/%E5%AE%9E%E7%94%A8js%E5%87%BD%E6%95%B0/" title="实用js函数">实用js函数</a><time datetime="2021-01-13T02:05:58.000Z" title="发表于 2021-01-13 10:05:58">2021-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/31/%E9%82%82%E9%80%85Angular/" title="邂逅Angular"><img src="https://i.loli.net/2020/12/31/KxDp6RZJVkXEC5Q.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="邂逅Angular"/></a><div class="content"><a class="title" href="/2020/12/31/%E9%82%82%E9%80%85Angular/" title="邂逅Angular">邂逅Angular</a><time datetime="2020-12-31T10:05:06.000Z" title="发表于 2020-12-31 18:05:06">2020-12-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By RainLotus</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">隐约雷鸣，阴霾天空，但盼风雨来，能留君在此</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rainlotus97/rainlotus97.github.io/css/love.css"><script src="https://cdn.jsdelivr.net/gh/rainlotus97/rainlotus97.github.io/js/love.js"></script><script src="https://cdn.jsdelivr.net/gh/rainlotus97/rainlotus97.github.io/js/sakura.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
